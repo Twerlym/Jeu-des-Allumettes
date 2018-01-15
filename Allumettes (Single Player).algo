@@ -1,0 +1,60 @@
+ALGORITHME : Allumettes
+
+CONST
+	rand = 2
+
+VAR
+	bot, allumettes, choix : ENTIER 	
+
+
+DEBUT 
+
+	allumettes ←  21  
+
+
+	ECRIRE " Jeu des allumettes "  
+	ECRIRE " Deux joueurs partagent un tas de 21 allumettes. " 
+	ECRIRE " Successivement, ils doivent retirer une, deux ou trois allumettes. " 
+
+
+
+	REPETER
+
+		////////// Player 1 //////////
+
+		ECRIRE " C'est à vous de jouer. " 				
+		ECRIRE " Entrez le nombre d'allumettes à retirer. " 
+
+		REPETER
+			LIRE (choix) 
+		JUSQU'A (choix = 1) or (choix = 2) or (choix = 3)			
+
+		allumettes := (allumettes - choix) ;					// Exemple : 21 - 3.
+		ECRIRE " Il reste : ", allumettes "allumettes. "  		// Reste 18.
+
+			SI (allumettes <= 0) ALORS 							// L'user perd si le nombre d'allumettes est inférieur à 0.
+				ECRIRE " Vous avez perdu ! "					// Etant donné qu'il y a 18 allumettes, le jeu ne s'arrête pas encore.  
+	
+
+
+
+		////////// BOT //////////
+
+		ECRIRE " C'est au tour de l'ordinateur.) 				// 18 - 3 (on imagine que le bot a fait 3).
+		bot = (ALEATOIRE(rand)+1) 
+		allumettes = allumettes - bot 
+		ECRIRE " Il reste : ", allumettes " allumettes. " 
+
+			SI (allumettes <= 0) ALORS 							
+				ECRIRE " Vous avez gagné ! "  					// Répétition de la boucle tant que le nombre d'allumettes est supérieur à 0.
+
+
+	JUSQU'A (allumettes <= 0)
+
+FIN.
+
+
+
+
+
+
